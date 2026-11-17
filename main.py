@@ -27,42 +27,45 @@ joueurs = [
 ]
 ajouter_joueurs = joueur.insert_many(joueurs)
 
+choix = 0
 joueur_dans_jeu = joueurs
 
-
+print(joueur_dans_jeu)
 
 #menu
-    
-    # tant que vrai
-
-        # initialiser le choix à 0
-
-        # sinon montrer les différent choix
-
+    # tant que infini
+        # montrer les différent choix
         # demander le choix au joueur
-        #si le choix est un chiffre et compris aux nombre de choix proposés
-            # si c'est 1 print le choix choisi et lancer choix joueur
-            # sinon si c'est 2 leaderboard 
-            # sinon quitter
-        #sinon
-            # print que le choix n'est pas le bon
-            # continuer 
-
-            
+        # retourner le choix
 
 
-#choix_joueur
-    # tant que vrai
+       
+# choix menu            
+
+    # si le choix est un nombre et compris entre 1 et 3
+        # transformer choix en chaine de caractère
+        # si c'est 1 print le choix choisi et lancer choix joueur
+            #écrire lancement du jeu
+        # sinon si c'est 2 lancer leaderboard 
+             #écrire entrer dans le leaderbord
+        # sinon ecrire quitter
+    #sinon
+        # print que le choix n'est pas bon
+
+
+#choix_joueur(joueurs_dans_jeu)
+    # tant que infini
         # joueur_choisis
-        # si le nombre de joueur est égal à trois
-            # return joueur_choisis
+        # si le nombre de joueur_choisi est égal à trois
+            # print votre équipe est complète et les jours de l'équipe
         # sinon
-        # montrer les différents joueur disponible avec leurs atouts
-        # demander le choix au joueur 
-        # si le choix est un chiffre et compris aux nombre de choix proposés
+            # montrer les différents joueur disponible avec leurs atouts
+            # demander le choix au joueur 
+            # si le choix est un chiffre et compris entre le nombre de joueur dans le jeu
             # ajouter sur mongo(joueur_choisi = joueur_choisis.insert_many(joueur_choisis))
-            # print les choix choisis 
+            # print le joueur choisi 
 
 
 
 # main()
+    #menu(choix)
