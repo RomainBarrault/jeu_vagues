@@ -56,16 +56,20 @@ print(joueur_dans_jeu)
 #choix_joueur(joueurs_dans_jeu)
     # tant que infini
         # joueur_choisis
-        # si le nombre de joueur_choisi est égal à trois
-            # print votre équipe est complète et les jours de l'équipe
+        # si le nombre de joueur est égal à trois
+            # print 
+            # return joueur_choisis
         # sinon
             # montrer les différents joueur disponible avec leurs atouts
             # demander le choix au joueur 
             # si le choix est un chiffre et compris entre le nombre de joueur dans le jeu
             # ajouter sur mongo(joueur_choisi = joueur_choisis.insert_many(joueur_choisis))
             # print le joueur choisi 
+            
 
 
 
-# main()
+# def main():
     #menu(choix)
+    #choix_joueur(joueurs_dans_jeu)
+#main()
