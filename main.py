@@ -31,16 +31,24 @@ joueur_dans_jeu = joueurs
 
 
 
-# choix = ""
-
-#interface
-    # initialiser le choix à 0
+#menu
+    
     # tant que vrai
-        # montrer les différent choix
-        # demander le choix au joueur 
-        # si le choix est un chiffre et compris aux nombre de choix proposés
-            # print le choix choisi 
-            # return choix 
+
+        # initialiser le choix à 0
+
+        # sinon montrer les différent choix
+
+        # demander le choix au joueur
+        #si le choix est un chiffre et compris aux nombre de choix proposés
+            # si c'est 1 print le choix choisi et lancer choix joueur
+            # sinon si c'est 2 leaderboard 
+            # sinon quitter
+        #sinon
+            # print que le choix n'est pas le bon
+            # continuer 
+
+            
 
 
 #choix_joueur
@@ -55,7 +63,6 @@ joueur_dans_jeu = joueurs
             # ajouter sur mongo(joueur_choisi = joueur_choisis.insert_many(joueur_choisis))
             # print les choix choisis 
 
-        
-    
 
-#interface()
+
+# main()
