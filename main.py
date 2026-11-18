@@ -25,7 +25,7 @@ joueur_jouer = db["joueur_jouer"]
 
 #menu
     # tant que infini
-        # montrer les différent choix
+        # montrer les différent choix (jouer, leaderbord, quitter)
         # demander le choix au joueur
         # retourner le choix
 
@@ -62,7 +62,8 @@ joueur_jouer = db["joueur_jouer"]
             #sinon
                 # écrire message d'erreur
 
-# def main                
+# def main
+    #choix_menu
 
 
 
