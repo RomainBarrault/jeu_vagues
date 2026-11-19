@@ -207,44 +207,48 @@ def combat(personne_combat,monstre_combat,vagues,point, personne_restant):
         monstre_combat ["pv"] -= personne_combat["atk"]
         # print les dégats infligé
         print(personne_combat["nom"],"a fait", personne_combat["atk"],"de dégat au ", monstre_combat["nom"],"il lui reste ", monstre_combat["pv"] )
-        # si monstre_combat(pv) <= 0
-        if monstre_combat["pv"] <= 0:
-            # ajouter 10 point
-            point = point +10
-            # print monstre batue
-            print("Monstre batue, vous avez gagnez : 10 points")
-            #ajout à vagues 1
-            vagues = vagues +1
-            #print la vague actuelle
-            print("Entrer dans la vague",vagues)
-            # choisir aléatoirement un monstre dans la db et importer le nom, pv et atk dans monstre_combat
-            monstre_combat = list(mechant.aggregate([{"$sample": {"size": 1}},{"$project": {"_id": 0, "nom": 1, "pv": 1, "atk": 1}}]))[0]
-            #return les données monstre_combat, vagues, point, personne_restant
-            return monstre_combat, vagues, point, personne_restant
-        #sinon
-        else:
-            #temps de pose
-            time.sleep(2)
-            # personne_combat(pv) -= monstre_combat(atk)
-            personne_combat ["pv"] -= monstre_combat["atk"]
-            # print les dégats infligé
-            print(monstre_combat["nom"],"a fait", monstre_combat["atk"],"de dégat au ", personne_combat["nom"],"il lui reste ", personne_combat["pv"] )
-            # si personne_combat(pv) <= 0
-            if personne_combat["pv"] <= 0:
-                #print que le joueur est mort
-                print(personne_combat["nom"],"est mort")
-                # supprimer le personnage de la db
-                joueur_jouer.delete_one({"nom": personne_combat["nom"]})
-                # retirer à personne_restant 1
-                personne_restant = personne_restant - 1
-                #return
-                return monstre_combat, vagues, point, personne_restant
+        resultat = test_vie_monstre(personne_combat, monstre_combat, vagues, point, personne_restant)
+        if resultat is not None:
+            return resultat
 
 
-#test_vie
-def test_vie():
+#test_vie_monstre
+def test_vie_monstre(personne_combat,monstre_combat,vagues,point, personne_restant):
+    # si monstre_combat(pv) <= 0
+    if monstre_combat["pv"] <= 0:
+        # ajouter 10 point
+        point = point +10
+        # print monstre batue
+        print("Monstre batue, vous avez gagnez : 10 points")
+        #ajout à vagues 1
+        vagues = vagues +1
+        #print la vague actuelle
+        print("Entrer dans la vague",vagues)
+        # choisir aléatoirement un monstre dans la db et importer le nom, pv et atk dans monstre_combat
+        monstre_combat = list(mechant.aggregate([{"$sample": {"size": 1}},{"$project": {"_id": 0, "nom": 1, "pv": 1, "atk": 1}}]))[0]
+        #return les données monstre_combat, vagues, point, personne_restant
+        return monstre_combat, vagues, point, personne_restant
+    #sinon
+    else:
+        test_vie_personne(personne_combat,monstre_combat,vagues,point, personne_restant)
 
-
+#test_vie_personne
+def test_vie_personne(personne_combat,monstre_combat,vagues,point, personne_restant):
+    time.sleep(2)
+    # personne_combat(pv) -= monstre_combat(atk)
+    personne_combat ["pv"] -= monstre_combat["atk"]
+    # print les dégats infligé
+    print(monstre_combat["nom"],"a fait", monstre_combat["atk"],"de dégat au ", personne_combat["nom"],"il lui reste ", personne_combat["pv"] )
+    # si personne_combat(pv) <= 0
+    if personne_combat["pv"] <= 0:
+        #print que le joueur est mort
+        print(personne_combat["nom"],"est mort")
+        # supprimer le personnage de la db
+        joueur_jouer.delete_one({"nom": personne_combat["nom"]})
+        # retirer à personne_restant 1
+        personne_restant = personne_restant - 1
+        #return
+        return monstre_combat, vagues, point, personne_restant
 # def main                
 def main():
     # choix_menu
