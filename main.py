@@ -34,7 +34,6 @@ joueurs = [
     {"nom": "chaman", "pv": 22, "atk": 7}
 ]
 #ajouter les joueurs dans la db
-
 # table des joueurs
 # nb_joueurs
 # point
@@ -98,6 +97,18 @@ joueurs = [
     #print la vague actuelle
     #print le nouveau joueur
     # tant que infini
+        # si personne_restant == 0 
+            # print fin de partie avec les points gagné
+            #envoyer dans la db le nom du joueur avec ses points
+            #return
+        #sinon
+            # si personne_combat(pv) <= 0
+                #importer depuis la bd la première personne avec le nom, pv et atk dans personne_combat
+                #print le nouveau joueur
+            #lancer le combat et mettre à jours l'état de la partie
+
+#def combat
+    #tant que infini
         #temps de pose
         # monstre_combat(pv) -= personne_combat(atk)
         # print les dégats infligé
@@ -107,6 +118,7 @@ joueurs = [
             #ajout à vagues 1
             #print la vague actuelle
             # choisir aléatoirement un monstre dans la db et importer le nom, pv et atk dans monstre_combat
+            #return les données monstre_combat, vagues, point, personne_restant
         #sinon
             #temps de pose
             # personne_combat(pv) -= monstre_combat(atk)
@@ -115,16 +127,7 @@ joueurs = [
                 #print que le joueur est mort
                 # supprimer le personnage de la db
                 # retirer à personne_restant 1
-                # si personne_restant == 0 
-                    # print fin de partie avec les points gagné
-                    #envoyer dans la db le nom du joueur avec ses points
-                    #return
-                #sinon
-                    #importer depuis la bd la première personne avec le nom, pv et atk dans personne_combat
-                    #print le nouveau joueur
-
-
-
+                #return
 # def main                
     # choix_menu
 
