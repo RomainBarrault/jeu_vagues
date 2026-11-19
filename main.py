@@ -128,24 +128,35 @@ def choix_joueur(nb_joueurs,joueur_jouer,nom_du_joueur):
                 print(element)
             # demander le choix au joueur entre 1 et 6
             joueur_final = input("Faire un choix entre 1 et 6 :" )
-            # verifier que ce soit un chiffre et que se soit compris entre 1 et 6
-            if joueur_final.isdigit() and 1<= int(joueur_final) <=6:
-                # Convertit la saisie en nombre entier
-                index = int(joueur_final) - 1
-                # Créer une copie 
-                perso_choisi = joueurs[index].copy()
-                # Supprime l'_id pour pas que ca duplique
-                perso_choisi.pop("_id", None)  
-                #ajouter le perso dans la liste des perso_choisi
-                joueur_jouers.append(perso_choisi)
-                # afficher le joueur choisi
-                print("vous avez choisi: ",perso_choisi["nom"])
-                # augmenter le nb_joueurs de 1 
-                nb_joueurs = nb_joueurs +1
-            #sinon
-            else:
-                # écrire message d'erreur
-                print("choix invalide")
+            nb_joueurs = test_choix_joueur(joueur_final,nb_joueurs)
+            
+            
+
+#test_choix_joueur
+def test_choix_joueur(joueur_final,nb_joueurs):
+    # verifier que ce soit un chiffre et que se soit compris entre 1 et 6
+    if joueur_final.isdigit() and 1<= int(joueur_final) <=6:
+        # Convertit la saisie en nombre entier
+        index = int(joueur_final) - 1
+        # Créer une copie 
+        perso_choisi = joueurs[index].copy()
+        # Supprime l'_id pour pas que ca duplique
+        perso_choisi.pop("_id", None)  
+        #ajouter le perso dans la liste des perso_choisi
+        joueur_jouers.append(perso_choisi)
+        # afficher le joueur choisi
+        print("vous avez choisi: ",perso_choisi["nom"])
+        # augmenter le nb_joueurs de 1 
+        nb_joueurs = nb_joueurs +1
+        #return nb_joueurs
+        return nb_joueurs
+    #sinon
+    else:
+        # écrire message d'erreur
+        print("choix invalide")
+        #return nb_joueurs
+        return nb_joueurs
+
 
 # vague 
 def vague(point,nom_du_joueur):
@@ -228,6 +239,12 @@ def combat(personne_combat,monstre_combat,vagues,point, personne_restant):
                 personne_restant = personne_restant - 1
                 #return
                 return monstre_combat, vagues, point, personne_restant
+
+
+#test_vie
+def test_vie():
+
+
 # def main                
 def main():
     # choix_menu
