@@ -122,12 +122,13 @@ def choix_joueur(nb_joueurs,joueur_jouer,nom_du_joueur):
             break
         # sinon
         else:
-            # pour les element de ma liste joueur afficher sans l'id
-            for element in joueur.find({}, {"_id": 0}):
+            # montrer les choix disponible avec leur numéro sans afficher l'id
+            for i, element in enumerate(joueur.find({}, {"_id": 0}), start=1):
                 #montrer les elements
-                print(element)
+                print(i, "-", element)
             # demander le choix au joueur entre 1 et 6
             joueur_final = input("Faire un choix entre 1 et 6 :" )
+            # tester le choix du joueur et ajouter à nb_joueurs si c'est bon
             nb_joueurs = test_choix_joueur(joueur_final,nb_joueurs)
             
             
@@ -207,7 +208,9 @@ def combat(personne_combat,monstre_combat,vagues,point, personne_restant):
         monstre_combat ["pv"] -= personne_combat["atk"]
         # print les dégats infligé
         print(personne_combat["nom"],"a fait", personne_combat["atk"],"de dégat au ", monstre_combat["nom"],"il lui reste ", monstre_combat["pv"] )
+        # vérifier si le monstre ou le joueur est mort
         resultat = test_vie_monstre(personne_combat, monstre_combat, vagues, point, personne_restant)
+        #quand un des deux meurs ca r'envoie le résultat
         if resultat is not None:
             return resultat
 
@@ -230,7 +233,7 @@ def test_vie_monstre(personne_combat,monstre_combat,vagues,point, personne_resta
         return monstre_combat, vagues, point, personne_restant
     #sinon
     else:
-        test_vie_personne(personne_combat,monstre_combat,vagues,point, personne_restant)
+        return test_vie_personne(personne_combat,monstre_combat,vagues,point, personne_restant)
 
 #test_vie_personne
 def test_vie_personne(personne_combat,monstre_combat,vagues,point, personne_restant):
